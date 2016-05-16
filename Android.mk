@@ -15,11 +15,12 @@
 LOCAL_PATH:= $(call my-dir)
 ifeq ($(TARGET_BUILD_REC_ZIP),true)
 
+ANYRECOVERY_ZIP_TARGET := $(PRODUCT_OUT)/anyrecovery
+
 include $(CLEAR_VARS)
 
 ar_recovery_zip_path := $(LOCAL_PATH)/prebuilt_AnyRecoveryZip
 
-ANYRECOVERY_ZIP_TARGET := $(PRODUCT_OUT)/anyrecovery
 
 ar_recovery_image := $(PRODUCT_OUT)/recovery.img
 
@@ -50,5 +51,28 @@ $(ANYRECOVERY_ZIP_TARGET): signapk recoveryimage
 
 .PHONY: anyrecovery_zip
 anyrecovery_zip: $(ANYRECOVERY_ZIP_TARGET)
+
+
+include $(CLEAR_VARS)
+
+ANYRECOVERY_ZIP_CLEAN:
+	@echo
+	@echo
+	@echo "Clean all the AnyRecovery.zip file !!!"
+	@echo "Start clean "
+	@echo "this file write by sndnvaps<sndnvaps@gmail.com>"
+	@echo
+	@echo
+
+	@echo ----------------- Clean AnyRecovery Zip Files ----------
+	rm -rf $(ANYRECOVERY_INS_DIR)
+	rm -rf $(ANYRECOVERY_ZIP_TARGET).zip 
+	rm -rf $(ANYRECOVERY_ZIP_TARGET)-unsigned.zip
+	rm -rf $(ANYRECOVERY_ZIP_TARGET)*.zip
+	rm -rf $(ANYRECOVERY_ZIP_TARGET)*.md5sum
+	@echo --------Finish clean AnyRecovery Zip Files --------------
+
+.PHONY: anyrecovery_clean
+anyrecovery_clean: ANYRECOVERY_ZIP_CLEAN
 
 endif

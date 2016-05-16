@@ -22,4 +22,9 @@
 	$make anyrecovery_zip 
 	$just have a coffce , anyrecovery.zip is build finish
 	$copy $(TARGET_OUT)/anyrecovery.zip to you sdcard or use `adb sideload` to install it
-```	
+```
+
+
+# Clean the output file 
+
+	$make anyrecovery_clean	
