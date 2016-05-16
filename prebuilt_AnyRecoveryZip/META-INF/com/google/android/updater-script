@@ -1,0 +1,12 @@
+assert(getprop("ro.product.device") == "aries" ||
+       getprop("ro.build.product") == "aries");
+show_progress(0.500000, 0);
+ui_print("mount /system");
+ui_print("port by sndnvaps<sndnvaps@gmail.com>");
+ui_print(" TWRP 2.7.0 for xiaomi MI2s ");
+mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/system", "/system");
+ui_print("delete /system/etc/install-recovery.sh");
+delete("/system/etc/install-recovery.sh");
+ui_print("install recovery.img");
+package_extract_file("recovery.img", "/dev/block/platform/msm_sdcc.1/by-name/recovery");
+unmount("/system");
