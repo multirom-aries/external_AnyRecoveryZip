@@ -46,7 +46,7 @@ $(ANYRECOVERY_ZIP_TARGET): signapk recoveryimage
 	rm -f $(ANYRECOVERY_ZIP_TARGET).zip $(ANYRECOVERY_ZIP_TARGET)-unsigned.zip
 	cd $(ANYRECOVERY_INS_DIR) && zip -qr ../$(notdir $@)-unsigned.zip *
 	java -jar $(HOST_OUT_JAVA_LIBRARIES)/signapk.jar $(DEFAULT_SYSTEM_DEV_CERTIFICATE).x509.pem $(DEFAULT_SYSTEM_DEV_CERTIFICATE).pk8 $(ANYRECOVERY_ZIP_TARGET)-unsigned.zip $(ANYRECOVERY_ZIP_TARGET).zip
-	$(ar_recovery_zip_path)/../rename_zip.sh $(ANYRECOVERY_ZIP_TARGET) $(TARGET_DEVICE) $(PWD)/$(ak_install_zip_path)/../version.h
+	$(ar_recovery_zip_path)/../rename_zip.sh $(ANYRECOVERY_ZIP_TARGET) $(TARGET_DEVICE) $(ar_recovery_zip_path)/../version.h
 	@echo ----- Made AnyRecovery ZIP installer -------- $@.zip
 
 .PHONY: anyrecovery_zip
